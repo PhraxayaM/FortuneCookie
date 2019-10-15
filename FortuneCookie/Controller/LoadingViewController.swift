@@ -26,8 +26,14 @@ class LoadingViewController: UIViewController {
         let  mainView = LoadingView(frame: self.view.frame)
         self.loadingView = mainView
         self.view.addSubview(loadingView)
+        loadingView.logoImageView.addTarget(self, action: #selector(presentFortuneVC), for: .touchUpInside)
+        
     }
     
+    @objc func presentFortuneVC() {
+        let createVC = FortuneScreenViewController()
+        self.present(createVC, animated: true)
+    }
     
     
     

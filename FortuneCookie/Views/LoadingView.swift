@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import  UIKit
+import UIKit
 import Lottie
 
 class LoadingView:  UIView {
@@ -20,11 +20,12 @@ class LoadingView:  UIView {
     }
 
     @objc func fcTapped() {
-        let lottie = AnimationView(name: "mrcookiegetsdrunk")
+        let lottie = AnimationView(name: "candm")
         lottie.frame = logoImageView.frame
         lottie.contentMode = .scaleAspectFit
         lottie.loopMode = .loop
         lottie.alpha = 0.0
+        
         
         UIView.animate(withDuration: 0.35, animations: {
             self.logoImageView.alpha  = 0.0
@@ -35,6 +36,8 @@ class LoadingView:  UIView {
                 lottie.alpha = 1.0
             }, completion: { (finished: Bool) in
                 //MARK: PRESENT VC
+                
+                
             })
         })
 //        let lottie = AnimationView()
@@ -42,7 +45,9 @@ class LoadingView:  UIView {
         print("tapped")
     }
     
+
     
+
     
     func  setupView() {
         backgroundColor = #colorLiteral(red: 0.6580411196, green: 0.06105834991, blue: 0.01216356736, alpha: 1)

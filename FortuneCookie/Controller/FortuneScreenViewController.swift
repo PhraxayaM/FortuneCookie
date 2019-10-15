@@ -17,7 +17,16 @@ class FortuneScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        network.getFortune()
+        network.getFortune{ response in
+            let message = response["message"]
+            
+            DispatchQueue.main.async {
+                self.fortuneView.fortuneResult.text = message as? String
+            }
+            
+        }
+
+        
         
     }
     func setup(){

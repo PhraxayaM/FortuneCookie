@@ -10,20 +10,39 @@ import Foundation
 
 class NetworkManager: NSObject {
     
-    func getFortune() {
-         let url = URL(string: "http://fortunecookieapi.com/v1/fortunes?limit=&skip=&page=")!
+    var fortune: FortuneScreenView!
+    
+    func getFortune(completion: @escaping ([String: Any])->()) {
+         let url = URL(string: "https://fortunecookieapi.herokuapp.com/v1/fortunes/5403c81dc2fea4020029ab34")!
          var request = URLRequest(url: url)
+//        let data = [];
+
+        
 
          let task = URLSession.shared.dataTask(with: request) { data, response, error in
-           if let response = response {
-             print(response)
-
-             if let data = data, let body = String(data: data, encoding: .utf8) {
-               print(body)
-             }
-           } else {
-             print(error ?? "Unknown error")
-           }
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription)
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                print(httpResponse.statusCode)
+            }
+            
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            
+            
+            if let responseJSON = responseJSON {
+                print(responseJSON as Any)
+//                data
+//                let  dictionary = responseJSON
+//                dictionary!.index(forKey: "message")
+//                print("the dict is: \(dictionary)")
+//                self.fortune.fortuneResult.text = "the result is \(responseJSON)"
+                
+            }
+            completion(responseJSON!!)
+            
          }
 
          task.resume()

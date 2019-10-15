@@ -29,6 +29,7 @@ class FortuneScreenView: UIView {
     
     func setupSubViews() {
         addSubview(cookieImageView)
+        addSubview(fortuneResult)
     }
     
     let  cookieImageView: UIImageView  = {
@@ -38,49 +39,17 @@ class FortuneScreenView: UIView {
         return  imageView
     }()
     
+    let fortuneResult: UILabel = {
+        let label = UILabel()
+        label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        label.text = "test"
+        label.font = UIFont(name: "Avenir-Black", size: 15)
+        label.textAlignment = .center
+
+
+        return label
+    }()
     
     
     
 }
-
-//class LoadingView:  UIView {
-//    override init(frame: CGRect) {
-//        super .init(frame: frame)
-//        setupView()
-//    }
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//
-//    func  setupView() {
-//        backgroundColor = #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)
-//        setupSubViews()
-//        setViewConstraints()
-//
-//    }
-//
-//    func setupSubViews() {
-//        addSubview(logoImageView)
-//        addSubview(loadingLabel)
-//    }
-//
-//    let logoImageView: UIImageView = {
-//        let imageView = UIImageView()
-//        imageView.image = UIImage(named: "fortunecookie")
-//
-//        return imageView
-//    }()
-//
-//    let loadingLabel: UILabel = {
-//        let  label = UILabel()
-//        label.textColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-//        label.text = "Your fortune is waiting"
-//        label.font = UIFont(name: "AktivGrotesk", size: 100)
-//        label.textAlignment = .center
-//
-//        return label
-//
-//    }()
-//
-//
-//}
